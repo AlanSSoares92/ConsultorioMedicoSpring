@@ -1,6 +1,7 @@
 package com.premier.consultorio.adapters.in.controller;
 
 import com.premier.consultorio.adapters.in.dto.request.MedicoDTO;
+import com.premier.consultorio.adapters.out.entity.Medicos;
 import com.premier.consultorio.infrastructure.service.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,8 @@ public class MedicoController {
         return new ResponseEntity<>(medicos, HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<Optional<MedicoDTO>> getAll(){
-        Optional<MedicoDTO> dtoList = service.findAll();
+    public ResponseEntity<List<Medicos>> getAll(){
+        List<Medicos> dtoList = service.findAll();
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 }

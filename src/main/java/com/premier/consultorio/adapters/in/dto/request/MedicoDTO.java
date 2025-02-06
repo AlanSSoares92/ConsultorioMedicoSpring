@@ -21,9 +21,7 @@ public class MedicoDTO {
     }
 
     public MedicoDTO(List<Medicos> listMedicos) {
-
     }
-
     public String getNome() {
         return Nome;
     }

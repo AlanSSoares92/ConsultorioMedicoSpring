@@ -30,9 +30,7 @@ public class MedicoService {
         Medicos entity = new Medicos(medico);
         repository.save(entity);
     }
-    public Optional<MedicoDTO> findAll(){
-        List<Medicos> listMedicos = repository.findAll();
-        Optional<MedicoDTO> dtoList = Optional.of(new MedicoDTO(listMedicos));
-        return dtoList;
+    public List<Medicos> findAll(){
+        return repository.findAll();
         };
 }
