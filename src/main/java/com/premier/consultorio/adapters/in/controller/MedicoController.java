@@ -3,11 +3,13 @@ package com.premier.consultorio.adapters.in.controller;
 import com.premier.consultorio.adapters.in.dto.request.MedicoDTO;
 import com.premier.consultorio.infrastructure.service.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/medicos")
@@ -18,13 +20,13 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public MedicoDTO salvar(@RequestBody MedicoDTO medicos){
+    public ResponseEntity<MedicoDTO> salvar(@RequestBody MedicoDTO medicos){
         service.save(medicos);
-        return medicos;
+        return new ResponseEntity<>(medicos, HttpStatus.CREATED);
     }
-//    @GetMapping
-//    public ResponseEntity<DadosCadastroMedicoDTO> pegar(){
-//       // List<DadosCadastroMedicoDTO> medicos = repository.findAll();
-//        return ResponseEntity.ok(medicoDTO);
-//    }
+    @GetMapping
+    public ResponseEntity<Optional<MedicoDTO>> getAll(){
+        Optional<MedicoDTO> dtoList = service.findAll();
+        return new ResponseEntity<>(dtoList, HttpStatus.OK);
+    }
 }

@@ -4,6 +4,8 @@ import com.premier.consultorio.adapters.out.entity.Endereco;
 import com.premier.consultorio.adapters.out.entity.Especialidade;
 import com.premier.consultorio.adapters.out.entity.Medicos;
 
+import java.util.List;
+
 public class MedicoDTO {
     private String Nome;
     private String email;
@@ -16,6 +18,10 @@ public class MedicoDTO {
     }
 
     public MedicoDTO() {
+    }
+
+    public MedicoDTO(List<Medicos> listMedicos) {
+
     }
 
     public String getNome() {
@@ -61,7 +67,6 @@ public class MedicoDTO {
     public Endereco getEndereco() {
         return endereco;
     }
-
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
